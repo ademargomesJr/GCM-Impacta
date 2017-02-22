@@ -1,0 +1,193 @@
+WordPress >> Versões 4.7.1 / 4.7.2
+
+WordPress 4.7 has been downloaded over 10 million times since its release on December 6, 2016 and we are pleased to announce the immediate availability of WordPress 4.7.1. This is a security release for all previous versions and we strongly encourage you to update your sites immediately.
+WordPress versions 4.7 and earlier are affected by eight security issues:
+1.	Remote code execution (RCE) in PHPMailer – No specific issue appears to affect WordPress or any of the major plugins we investigated but, out of an abundance of caution, we updated PHPMailer in this release. This issue was fixed in PHPMailer thanks to Dawid Golunski and Paul Buonopane.
+2.	The REST API exposed user data for all users who had authored a post of a public post type. WordPress 4.7.1 limits this to only post types which have specified that they should be shown within the REST API. Reported by Krogsgard and Chris Jean.
+3.	Cross-site scripting (XSS) via the plugin name or version header on update-core.php. Reported by Dominik Schilling of the WordPress Security Team.
+4.	Cross-site request forgery (CSRF) bypass via uploading a Flash file. Reported by Abdullah Hussam.
+5.	Cross-site scripting (XSS) via theme name fallback. Reported by Mehmet Ince.
+6.	Post via email checks mail.example.com if default settings aren’t changed. Reported by John Blackbourn of the WordPress Security Team.
+7.	A cross-site request forgery (CSRF) was discovered in the accessibility mode of widget editing. Reported by Ronnie Skansing.
+8.	Weak cryptographic security for multisite activation key. Reported by Jack.
+Thank you to the reporters for practicing responsible disclosure.
+In addition to the security issues above, WordPress 4.7.1 fixes 62 bugs from 4.7. For more information, see the release notes or consult the list of changes.
+Download WordPress 4.7.1 or venture over to Dashboard → Updates and simply click “Update Now.” Sites that support automatic background updates are already beginning to update to WordPress 4.7.1.
+Thanks to everyone who contributed to 4.7.1: Aaron D. Campbell, Aaron Jorbin, Adam Silverstein, Andrea Fercia, Andrew Ozz, bonger, Boone Gorges, Chandra Patel, Christian Chung, David Herrera, David Shanske, Dion Hulse, Dominik Schilling (ocean90), DreamOn11, Edwin Cromley, Ella van Dorpe, Gary Pendergast, Hristo Pandjarov, James Nylen, Jeff Bowen, Jeremy Felt, Jeremy Pry, Joe Hoyle, Joe McGill, John Blackbourn, Keanan Koppenhaver, Konstantin Obenland, laurelfulford, Marin Atanasov, mattyrob, monikarao, Nate Reist, Nick Halsey, Nikhil Chavan, nullvariable, Payton Swick, Peter Wilson, Presskopp, Rachel Baker, Ryan McCue, Sanket Parmar, Sebastian Pisula, sfpt, shazahm1, Stanimir Stoyanov, Steven Word, szaqal21, timph, voldemortensen, vortfu, and Weston Ruter.
+=============================================================================
+WordPress 4.7.2 is now available. This is a security release for all previous versions and we strongly encourage you to update your sites immediately.
+WordPress versions 4.7.1 and earlier are affected by three security issues:
+1.	The user interface for assigning taxonomy terms in Press This is shown to users who do not have permissions to use it. Reported by David Herrera of Alley Interactive.
+2.	WP_Query is vulnerable to a SQL injection (SQLi) when passing unsafe data. WordPress core is not directly vulnerable to this issue, but we’ve added hardening to prevent plugins and themes from accidentally causing a vulnerability. Reported by Mo Jangda (batmoo).
+3.	A cross-site scripting (XSS) vulnerability was discovered in the posts list table. Reported by Ian Dunn of the WordPress Security Team.
+4.	An unauthenticated privilege escalation vulnerability was discovered in a REST API endpoint. Reported by Marc-Alexandre Montpas of Sucuri Security. *
+Thank you to the reporters of these issues for practicing responsible disclosure.
+Download WordPress 4.7.2 or venture over to Dashboard → Updates and simply click “Update Now.” Sites that support automatic background updates are already beginning to update to WordPress 4.7.2.
+Thanks to everyone who contributed to 4.7.2.
+* Update: An additional serious vulnerability was fixed in this release and public disclosure was delayed. For more information on this vulnerability, additional mitigation steps taken, and an explanation for why disclosure was delayed, please read Disclosure of Additional Security Fix in WordPress 4.7.2.
+
+
+NGINX >> 1.11.9 / 1.11.10
+1.11.9
+
+*) Bugfix: nginx might hog CPU when using the stream module; the bug had
+appeared in 1.11.5.
+
+*) Bugfix: EXTERNAL authentication mechanism in mail proxy was accepted
+even if it was not enabled in the configuration.
+
+*) Bugfix: a segmentation fault might occur in a worker process if the
+"ssl_verify_client" directive of the stream module was used.
+
+*) Bugfix: the "ssl_verify_client" directive of the stream module might
+not work.
+
+*) Bugfix: closing keepalive connections due to no free worker
+connections might be too aggressive.
+Thanks to Joel Cunningham.
+
+*) Bugfix: an incorrect response might be returned when using the
+"sendfile" directive on FreeBSD and macOS; the bug had appeared in
+1.7.8.
+
+*) Bugfix: a truncated response might be stored in cache when using the
+"aio_write" directive.
+
+*) Bugfix: a socket leak might occur when using the "aio_write"
+directive.
+
+
+
+1.11.10 
+
+*) Change: cache header format has been changed, previously cached
+       responses will be invalidated.
+
+    *) Feature: support of "stale-while-revalidate" and "stale-if-error"
+       extensions in the "Cache-Control" backend response header line.
+
+    *) Feature: the "proxy_cache_background_update",
+       "fastcgi_cache_background_update", "scgi_cache_background_update",
+       and "uwsgi_cache_background_update" directives.
+
+    *) Feature: nginx is now able to cache responses with the "Vary" header
+       line up to 128 characters long (instead of 42 characters in previous
+       versions).
+
+    *) Feature: the "build" parameter of the "server_tokens" directive.
+       Thanks to Tom Thorogood.
+
+    *) Bugfix: "[crit] SSL_write() failed" messages might appear in logs
+       when handling requests with the "Expect: 100-continue" request header
+       line.
+
+    *) Bugfix: the ngx_http_slice_module did not work in named locations.
+
+    *) Bugfix: a segmentation fault might occur in a worker process when
+       using AIO after an "X-Accel-Redirect" redirection.
+
+    *) Bugfix: reduced memory consumption for long-lived requests using
+       gzipping.
+
+
+
+Apache HTTP Server >> 2.2.31 / 2.2.32
+
+2.2.31
+*) Correct win32 build issues for mod_proxy exports, OpenSSL 1.0.x headers.
+     [Yann Ylavic, Gregg Smith]
+=============================================================================
+2.2.32
+*) SECURITY: CVE-2016-8743 (cve.mitre.org)
+     Enforce HTTP request grammar corresponding to RFC7230 for request lines
+     and request headers, to prevent response splitting and cache pollution by
+     malicious clients or downstream proxies. [William Rowe, Stefan Fritsch]
+
+  *) Validate HTTP response header grammar defined by RFC7230, resulting
+     in a 500 error in the event that invalid response header contents are
+     detected when serving the response, to avoid response splitting and cache
+     pollution by malicious clients, upstream servers or faulty modules.
+     [Stefan Fritsch, Eric Covener, Yann Ylavic]
+
+  *) core: Mitigate [f]cgi CVE-2016-5387 "httpoxy" issues.
+     [Dominic Scheirlinck <dominic vendhq.com>, Yann Ylavic]
+
+  *) core: Avoid a possible truncation of the faulty header included in the
+     HTML response when LimitRequestFieldSize is reached.  [Yann Ylavic]
+
+  *) core: Enforce LimitRequestFieldSize after multiple headers with the same
+     name have been merged. [Stefan Fritsch]
+
+  *) core: Drop Content-Length header and message-body from HTTP 204 responses.
+     PR 51350 [Luca Toscano]
+
+  *) core: Permit unencoded ';' characters to appear in proxy requests and
+     Location: response headers. Corresponds to modern browser behavior.
+     [William Rowe]
+
+  *) core: ap_rgetline_core now pulls from r->proto_input_filters.
+
+  *) core: Correctly parse an IPv6 literal host specification in an absolute
+     URL in the request line. [Stefan Fritsch]
+
+  *) core: New directive RegisterHttpMethod for registering non-standard
+     HTTP methods. [Stefan Fritsch]
+
+  *) core: Limit to ten the number of tolerated empty lines between request.
+     [Yann Ylavic]
+
+  *) core: reject NULLs in request line or request headers.
+     PR 43039 [Nick Kew]
+
+  *) mod_proxy: Use the correct server name for SNI in case the backend
+     SSL connection itself is established via a proxy server.
+     PR 57139 [Szabolcs Gyurko <szabolcs gyurko.org>]
+
+  *) Fix potential rejection of valid MaxMemFree and ThreadStackSize
+     directives.  [Mike Rumph <mike.rumph oracle.com>]
+
+  *) mod_ssl: Support compilation against libssl built with OPENSSL_NO_SSL3.
+     [Kaspar Brand]
+
+  *) mod_proxy: Correctly consider error response codes by the backend when
+     processing failonstatus. PR 59869 [Ruediger Pluem]
+
+  *) mod_proxy: Play/restore the TLS-SNI on new backend connections which
+     had to be issued because the remote closed the previous/reusable one
+     during idle (keep-alive) time.  [Yann Ylavic]
+
+  *) mod_ssl: Fix a possible memory leak on restart for custom [EC]DH params.
+     [Jan Kaluza, Yann Ylavic]
+
+  *) mod_proxy: Fix a regression with 2.2.31 that caused inherited workers to
+     use a different scoreboard slot then the original one.  PR 58267.
+     [Ruediger Pluem]
+
+  *) mod_proxy: Fix a race condition that caused a failed worker to be retried
+     before the retry period is over. [Ruediger Pluem]
+
+  *) mod_proxy: don't recyle backend announced "Connection: close" connections
+     to avoid reusing it should the close be effective after some new request
+     is ready to be sent.  [Yann Ylavic]
+
+  *) mod_mem_cache: Fix concurrent removal of stale entries which could lead
+     to a crash.  PR 43724.  [Yann Ylavic]
+
+  *) mime.types: add common extension "m4a" for MPEG 4 Audio.
+     PR 57895 [Dylan Millikin <dylan.millikin gmail.com>]
+
+  *) mod_substitute: Allow to configure the patterns merge order with the new
+     SubstituteInheritBefore on|off directive.  PR 57641
+     [Marc.Stern <Marc.Stern approach.be>, Yann Ylavic, William Rowe]
+
+  *) mod_mem_cache: Don't cache incomplete responses when the client
+     connection is aborted before the body is fully read.  PR 45049.
+     [Nick Pace <nick simplylogic.net>, Edward Lu, Yann Ylavic]
+
+  *) abs: Include OPENSSL_Applink when compiling on Windows, to resolve
+     failures under Visual Studio 2015 and other mismatched MSVCRT flavors.
+     PR59630 [Jan Ehrhardt <phpdev ehrhardt.nl>]
+
+  *) core: Support custom ErrorDocuments for HTTP 501 and 414 status codes.
+     PR 57167 [Edward Lu <Chaosed0 gmail.com>]
+
